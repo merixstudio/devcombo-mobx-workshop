@@ -91,8 +91,16 @@ TaskGroup.propTypes = {
   taskStore: PropTypes.shape({
     tasks: PropTypes.shape({}),
   }).isRequired,
+  uiStore: PropTypes.shape({
+    highlightArea: PropTypes.func,
+    dropElement: PropTypes.func,
+    dragElement: PropTypes.func,
+    isDragging: PropTypes.bool,
+    highlightedArea: PropTypes.string,
+  }).isRequired,
 };
 
 export default inject(
-  ['taskStore'],
+  'taskStore',
+  'uiStore',
 )(observer(TaskGroup));

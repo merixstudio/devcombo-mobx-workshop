@@ -5,8 +5,14 @@ import { observer } from 'mobx-react';
 import { ChangePriority } from '.';
 import { STAGE } from '../constants/task';
 
-const Task = ({ task }) => (
+const Task = ({
+  task,
+  draggable,
+  onDrag,
+}) => (
   <div
+    draggable={draggable}
+    onDragStart={() => onDrag(task)}
     className={`
       task
       task--${task.stage.toLowerCase()}
@@ -48,6 +54,13 @@ Task.propTypes = {
     title: PropTypes.string,
     author: PropTypes.string,
   }).isRequired,
+  draggable: PropTypes.bool,
+  onDrag: PropTypes.func,
+};
+
+Task.defaultProps = {
+  draggable: false,
+  onDrag: () => {},
 };
 
 export default observer(Task);

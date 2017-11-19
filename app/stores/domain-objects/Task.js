@@ -18,6 +18,10 @@ class Task {
     this.priority = priority;
   }
 
+  @action changeStage(stage) {
+    this.stage = stage;
+  }
+
   delete() {
     this.taskStore.deleteTask(this);
   }
