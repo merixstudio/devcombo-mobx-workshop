@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { MuiThemeProvider } from 'material-ui/styles';
 import injectTap from 'react-tap-event-plugin';
 
-import { Header } from './components';
+import { App } from './components';
 
 import theme from './constants/mui-theme';
 
@@ -11,12 +11,8 @@ import './styles/main.scss';
 
 injectTap();
 
-const App = () => (
+ReactDOM.render((
   <MuiThemeProvider muiTheme={theme}>
-    <div>
-      <Header />
-    </div>
+    <App />
   </MuiThemeProvider>
-);
-
-ReactDOM.render(<App />, document.querySelector('#mount-point'));
+), document.querySelector('#mount-point'));

@@ -1,3 +1,28 @@
 body {
   margin: 0;
 }
+
+.app{
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  &__column {
+    width: 50%;
+    display: flex;
+    align-items: stretch;
+  }
+
+  @media screen and (max-width: 1400px) {
+    &__column {
+      width: 100%;
+      display: flex;
+      align-items: stretch;
+    }
+  }
+}

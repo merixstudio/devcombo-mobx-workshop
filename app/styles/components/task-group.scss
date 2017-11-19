@@ -1,0 +1,9 @@
+.task-group {
+  margin: 60px auto 0 !important;
+  padding: 16px;
+  &__lists {
+    display: flex;
+    min-height: calc(100% - 65px);
+    align-items: stretch;
+  }
+}

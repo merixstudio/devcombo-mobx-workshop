@@ -1,0 +1,26 @@
+.change-priority {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  list-style: none;
+  &__item {
+    &--high {
+      background-color: #FFA726;
+    }
+    &--critical {
+      background-color: #FF7043;
+    }
+    &--medium {
+      background-color: #FFEE58;
+    }
+    &--low {
+      background-color: #BBDEFB;
+    }
+  }
+  &__button {
+    border: none;
+    background-color: transparent;
+    display: block;
+    height: 15px;
+  }
+}

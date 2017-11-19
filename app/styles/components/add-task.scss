@@ -1,0 +1,17 @@
+.add-task {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 60px auto 0;
+  max-width: 600px;
+
+  &__button {
+    background-color: #136298 !important;
+    border-radius: 50%;
+  }
+  &__button-icon {
+    color: #fff !important;
+  }
+  &__dialog {
+    width: 500px !important;
+  }
+}

@@ -1,0 +1,47 @@
+.task-list {
+  min-width: 160px;
+  flex: 1 1 160px;
+  border: 1px solid #f1f1f1;
+  &--highlighted {
+    background-color: rgba(227, 242, 253, 0.4);
+  }
+  &--highlighted-strong {
+    background-color: rgba(144, 202, 249, 0.8);
+  }
+  &--done {
+    background-color: rgba(200, 230, 201, 0.2);
+    .task-list__title {
+      background-color: #CBD993;
+    }
+    &.task-list--highlighted {
+      background-color: rgba(200, 230, 201, 0.6);
+    }
+    &.task-list--highlighted-strong {
+      background-color: #C8E6C9;
+    }
+  }
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  &__element {
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+
+  }
+  &__title {
+    background-color: #67B3E4;
+    color: #fff;
+    margin: 0;
+    padding: 0.5em;
+    font-size: 18px;
+    text-align: center;
+  }
+  &__element:nth-child(2n) {
+
+  }
+  &__element:nth-child(2n+1) {
+
+  }
+}

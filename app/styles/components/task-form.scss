@@ -1,0 +1,10 @@
+.task-form {
+  &__submit-container {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  &__field {
+    width: 100% !important;
+  }
+}

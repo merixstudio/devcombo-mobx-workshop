@@ -1,0 +1,49 @@
+.task {
+  background-color: #E3F2FD;
+  height: 80px;
+  padding: 0.5em;
+  color: #333;
+  position: relative;
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background-color: transparent;
+    font-weight: 700;
+    display: block;
+    padding: 2px;
+  }
+  &__name {
+    margin: 0;
+    font-size: 16px;
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  &__author, &__stage, &__assigned-to, &__date {
+    margin: 0;
+    font-size: 14px;
+  }
+  &--draggable {
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+  }
+  &--done {
+    background-color: #A5D6A7 !important;
+  }
+  &--critical {
+    background-color: #FFAB91;
+  }
+  &--high {
+    background-color: #FFCC80;
+  }
+  &--medium {
+    background-color: #FFF59D;
+  }
+  &--low {
+  }
+}
