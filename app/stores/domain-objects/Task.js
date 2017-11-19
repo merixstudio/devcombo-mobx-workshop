@@ -25,6 +25,12 @@ class Task {
   delete() {
     this.taskStore.deleteTask(this);
   }
+  toJSON() {
+    const that = { ...this };
+    delete that.taskStore;
+    return that;
+  }
 }
+
 
 export default Task;

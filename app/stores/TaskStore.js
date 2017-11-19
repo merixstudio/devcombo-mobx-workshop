@@ -1,6 +1,7 @@
 import {
   observable,
   action,
+  autorun,
 } from 'mobx';
 
 import Task from './domain-objects/Task';
@@ -13,8 +14,12 @@ import {
 class TaskStore {
   @observable tasks = [];
 
-  constructor(initialTasks = []) {
-    this.tasks = initialTasks.map(plainTask => new Task(this, plainTask));
+  constructor() {
+    const stored = JSON.parse(localStorage.getItem('tasks'));
+    this.tasks = stored ? stored.map(taskString => new Task(this, taskString)) : [];
+    autorun(() => {
+      localStorage.setItem('tasks', JSON.stringify(this.tasks));
+    });
   }
 
   @action deleteTask(task) {
@@ -23,11 +28,12 @@ class TaskStore {
 
   @action addTask(title, author) {
     this.tasks.push(new Task(this, {
-      id: this.tasks[this.tasks.length - 1].id + 1,
+      id: this.tasks.length ? this.tasks[this.tasks.length - 1].id + 1 : 1,
       title,
       author,
       priority: PRIORITY.MEDIUM,
       stage: STAGE.TODO,
+      changeDate: new Date(),
     }));
   }
 }
