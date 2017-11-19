@@ -1,0 +1,13 @@
+.idea/
+.vscode/
+node_modules/
+dist/
+db/
+*.iml
+webpack-assets.json
+webpack-stats.json
+npm-debug.log*
+yarn-error.log*
+selenium-debug.log*
+reports
+todo.txt

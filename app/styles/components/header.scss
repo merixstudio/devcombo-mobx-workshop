@@ -1,0 +1,10 @@
+.header {
+  max-height: 64px;
+  & > div:first-child{
+    margin: 12px 12px 12px -16px !important;
+    max-width: 200px;
+  }
+  &__logo {
+    height: 100%;
+  }
+}
