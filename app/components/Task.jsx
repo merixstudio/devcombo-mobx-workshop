@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { observer } from 'mobx-react';
 
 import { ChangePriority } from '.';
 import { STAGE } from '../constants/task';
@@ -49,4 +50,4 @@ Task.propTypes = {
   }).isRequired,
 };
 
-export default Task;
+export default observer(Task);
