@@ -7,7 +7,10 @@ import {
 } from 'material-ui';
 
 const TaskForm = ({ onSubmit }) => (
-  <form onSubmit={onSubmit}>
+  <form
+    onSubmit={onSubmit}
+    autoComplete="off"
+  >
     <div className="task-form__field-container">
       <TextField
         name="title"

@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import {
+  observer,
+  inject,
+} from 'mobx-react';
+import PropTypes from 'prop-types';
+import {
   IconButton,
   Dialog,
 } from 'material-ui';
@@ -9,14 +14,19 @@ import { TaskForm } from '.';
 class AddTask extends Component {
   constructor() {
     super();
-    this.state = { open: false };
-
     this.onTaskCreation = this.onTaskCreation.bind(this);
   }
 
   onTaskCreation(event) {
     event.preventDefault();
-    console.log(event.target.author.value, event.target.title.value);
+    const author = event.target.author;
+    const title = event.target.title;
+    if (title.value && author.value) {
+      this.props.taskStore.addTask(title.value, author.value);
+      this.props.uiStore.changeDialog(false);
+      title.value = '';
+      author.value = '';
+    }
   }
 
   render() {
@@ -25,13 +35,13 @@ class AddTask extends Component {
         <IconButton
           iconClassName="material-icons add-task__button-icon"
           className="add-task__button"
-          onClick={() => this.setState({ open: true })}
+          onClick={() => this.props.uiStore.changeDialog(true)}
         >
           add
         </IconButton>
         <Dialog
-          open={this.state.open}
-          onRequestClose={() => this.setState({ open: false })}
+          open={this.props.uiStore.isDialogOpen}
+          onRequestClose={() => this.props.uiStore.changeDialog(false)}
           contentClassName="add-task__dialog"
         >
           <TaskForm
@@ -43,4 +53,17 @@ class AddTask extends Component {
   }
 }
 
-export default AddTask;
+AddTask.propTypes = {
+  uiStore: PropTypes.shape({
+    isDialogOpen: PropTypes.bool,
+    changeDialog: PropTypes.func,
+  }).isRequired,
+  taskStore: PropTypes.shape({
+    addTask: PropTypes.func,
+  }).isRequired,
+};
+
+export default inject(
+  'uiStore',
+  'taskStore',
+)(observer(AddTask));

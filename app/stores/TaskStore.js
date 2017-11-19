@@ -5,6 +5,11 @@ import {
 
 import Task from './domain-objects/Task';
 
+import {
+  STAGE,
+  PRIORITY,
+} from '../constants/task';
+
 class TaskStore {
   @observable tasks = [];
 
@@ -14,6 +19,16 @@ class TaskStore {
 
   @action deleteTask(task) {
     this.tasks = this.tasks.filter(t => t !== task);
+  }
+
+  @action addTask(title, author) {
+    this.tasks.push(new Task(this, {
+      id: this.tasks[this.tasks.length - 1].id + 1,
+      title,
+      author,
+      priority: PRIORITY.MEDIUM,
+      stage: STAGE.TODO,
+    }));
   }
 }
 

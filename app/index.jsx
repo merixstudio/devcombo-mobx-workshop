@@ -7,7 +7,10 @@ import { useStrict } from 'mobx';
 
 import { App } from './views';
 
-import { TaskStore } from './stores';
+import {
+  TaskStore,
+  UIStore,
+} from './stores';
 
 import { tasks } from './constants/initial-data';
 
@@ -19,7 +22,10 @@ injectTap();
 useStrict(true);
 
 ReactDOM.render((
-  <Provider taskStore={new TaskStore(tasks)}>
+  <Provider
+    taskStore={new TaskStore(tasks)}
+    uiStore={new UIStore()}
+  >
     <MuiThemeProvider muiTheme={theme}>
       <App />
     </MuiThemeProvider>
