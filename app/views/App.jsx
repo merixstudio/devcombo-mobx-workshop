@@ -3,9 +3,7 @@ import {
   TaskGroup,
   AddTask,
   Header,
-} from '.';
-
-import { tasks } from '../constants/initial-data';
+} from '../components';
 
 class App extends Component {
   render() {
@@ -18,14 +16,12 @@ class App extends Component {
               <TaskGroup
                 groupBy="stage"
                 groupByText="etap"
-                tasks={tasks}
               />
             </div>
             <div className="app__column">
               <TaskGroup
                 groupBy="priority"
                 groupByText="priorytet"
-                tasks={tasks}
               />
             </div>
           </div>

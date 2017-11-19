@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Paper } from 'material-ui';
+import { inject, observer } from 'mobx-react';
 
 import { TaskList } from '.';
 import {
@@ -15,28 +16,28 @@ class TaskGroup extends Component {
         key="Oczekujace"
         title="Oczekujace"
         stage={STAGE.TODO}
-        tasks={this.props.tasks.filter(task => task.stage === STAGE.TODO)}
+        tasks={this.props.taskStore.tasks.filter(task => task.stage === STAGE.TODO)}
         droppable
       />,
       <TaskList
         key="W trakcie"
         title="W trakcie"
         stage={STAGE.INPROGRESS}
-        tasks={this.props.tasks.filter(task => task.stage === STAGE.INPROGRESS)}
+        tasks={this.props.taskStore.tasks.filter(task => task.stage === STAGE.INPROGRESS)}
         droppable
       />,
       <TaskList
         key="QA"
         title="QA"
         stage={STAGE.QA}
-        tasks={this.props.tasks.filter(task => task.stage === STAGE.QA)}
+        tasks={this.props.taskStore.tasks.filter(task => task.stage === STAGE.QA)}
         droppable
       />,
       <TaskList
         key="Zrobione"
         title="Zrobione"
         stage={STAGE.DONE}
-        tasks={this.props.tasks.filter(task => task.stage === STAGE.DONE)}
+        tasks={this.props.taskStore.tasks.filter(task => task.stage === STAGE.DONE)}
         droppable
       />,
     ];
@@ -47,22 +48,22 @@ class TaskGroup extends Component {
       <TaskList
         title="Krytyczny"
         key="Critical"
-        tasks={this.props.tasks.filter(task => task.priority === PRIORITY.CRITICAL)}
+        tasks={this.props.taskStore.tasks.filter(task => task.priority === PRIORITY.CRITICAL)}
       />,
       <TaskList
         title="Wysoki"
         key="High"
-        tasks={this.props.tasks.filter(task => task.priority === PRIORITY.HIGH)}
+        tasks={this.props.taskStore.tasks.filter(task => task.priority === PRIORITY.HIGH)}
       />,
       <TaskList
         title="Średni"
         key="Medium"
-        tasks={this.props.tasks.filter(task => task.priority === PRIORITY.MEDIUM)}
+        tasks={this.props.taskStore.tasks.filter(task => task.priority === PRIORITY.MEDIUM)}
       />,
       <TaskList
         title="Niski"
         key="Low"
-        tasks={this.props.tasks.filter(task => task.priority === PRIORITY.LOW)}
+        tasks={this.props.taskStore.tasks.filter(task => task.priority === PRIORITY.LOW)}
       />,
     ];
   }
@@ -87,9 +88,11 @@ class TaskGroup extends Component {
 TaskGroup.propTypes = {
   groupBy: PropTypes.string.isRequired,
   groupByText: PropTypes.string.isRequired,
-  tasks: PropTypes.arrayOf(PropTypes.shape({
-
-  })).isRequired,
+  taskStore: PropTypes.shape({
+    tasks: PropTypes.shape({}),
+  }).isRequired,
 };
 
-export default TaskGroup;
+export default inject(
+  ['taskStore'],
+)(observer(TaskGroup));

@@ -1,5 +1,6 @@
 .task-list {
   min-width: 160px;
+  max-width: 160px;
   flex: 1 1 160px;
   border: 1px solid #f1f1f1;
   &--highlighted {
