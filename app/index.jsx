@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { MuiThemeProvider } from 'material-ui/styles';
 import injectTap from 'react-tap-event-plugin';
 import { Provider } from 'mobx-react';
+import { useStrict } from 'mobx';
 
 import { App } from './views';
 
@@ -15,6 +16,7 @@ import theme from './constants/mui-theme';
 import './styles/main.scss';
 
 injectTap();
+useStrict(true);
 
 ReactDOM.render((
   <Provider taskStore={new TaskStore(tasks)}>

@@ -14,7 +14,9 @@ const ChangePriority = ({ task }) => (
       >
         <button
           className="change-priority__button"
-          onClick={() => {}}
+          onClick={() => {
+            task.changePriority(priority);
+          }}
           disabled={task.priority === priority}
         />
       </li>
