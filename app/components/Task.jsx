@@ -34,7 +34,7 @@ const Task = ({ task }) => (
     )}
     <button
       className="task__delete"
-      onClick={() => {}}
+      onClick={() => task.delete()}
     >
       X
     </button>

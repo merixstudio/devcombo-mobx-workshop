@@ -1,4 +1,7 @@
-import { observable } from 'mobx';
+import {
+  observable,
+  action,
+} from 'mobx';
 
 import Task from './domain-objects/Task';
 
@@ -6,7 +9,11 @@ class TaskStore {
   @observable tasks = [];
 
   constructor(initialTasks = []) {
-    this.tasks = initialTasks.map(plainTask => new Task(plainTask));
+    this.tasks = initialTasks.map(plainTask => new Task(this, plainTask));
+  }
+
+  @action deleteTask(task) {
+    this.tasks = this.tasks.filter(t => t !== task);
   }
 }
 

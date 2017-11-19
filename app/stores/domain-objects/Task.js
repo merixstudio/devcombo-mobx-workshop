@@ -7,7 +7,8 @@ class Task {
   @observable priority;
   @observable stage;
 
-  constructor(plainTask) {
+  constructor(taskStore, plainTask) {
+    this.taskStore = taskStore;
     Object.entries(plainTask).forEach(([key, value]) => {
       this[key] = value;
     });
@@ -15,6 +16,10 @@ class Task {
 
   @action changePriority(priority) {
     this.priority = priority;
+  }
+
+  delete() {
+    this.taskStore.deleteTask(this);
   }
 }
 
